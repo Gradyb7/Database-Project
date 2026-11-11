@@ -61,3 +61,28 @@ BEGIN
 END;
 
 GO
+
+-- Query 3: Average Box Office Revenue
+-- Shows the average box office revenue made per MPA rating in a certain genre.
+-- Only includes movies in @Genre.
+
+CREATE OR ALTER PROCEDURE AverageRevenuePerGenreByRating
+	@Genre NVARCHAR(50)
+
+AS
+BEGIN
+	SELECT 
+		R.Rating,
+		AVG(M.BoxOfficeRevenue) AS AverageRevenue
+	FROM
+		Movie M
+		INNER JOIN Media ME ON M.MediaID = ME.MediaID
+		INNER JOIN Genre G ON ME.GenreID = G.GenreID
+		INNER JOIN MPARating R ON R.MPAID = M.MPAID
+	WHERE
+		G.GenreName = @Genre
+	GROUP BY
+		R.MPAID, R.Rating;
+END;
+
+GO

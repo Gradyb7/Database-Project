@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Users | Media Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <p class="site-name">Media Tracker</p>
+      <!-- TODO: Keep navigation consistent across pages; add signed-in user controls if needed. -->
+      <nav aria-label="Main navigation">
+      <a href="index.html">Browse media</a>
+      <a href="media-form.html">Add media</a>
+      <a href="users.html" aria-current="page">Users</a>
+      <a href="reports.html">Reports</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <h1>Users</h1>
+    <p class="notice">Frontend scaffold: data is not connected yet. Forms and reports are inactive.</p>
+    <section aria-labelledby="users-heading">
+      <h2 id="users-heading">User list</h2>
+      <!-- TODO: Load users and provide a way to select a profile  to view or edit. idk if we need auth or not or just a txt file with example password -->
+      <p class="empty-state">Users will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="profile-heading">
+      <h2 id="profile-heading">Add or edit a user</h2>
+      <form>
+        <fieldset disabled>
+          <legend>User details</legend>
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username">
+          <!-- TODO: Add remaining profile fields from the final Users schema. Load an existing user's values when editing, connect create/update requests. -->
+          <button type="button" disabled>Save user</button>
+        </fieldset>
+      </form>
+    </section>
+    <!-- TODO: Add forms/pages for Author, Producer, and Publisher SELECT/INSERT/UPDATE, only if we want to be able to add authors via ui or we could just inject into db -->
+  </main>
+  <footer class="container"><p>Media Tracker · CIS 560 Group 3</p></footer>
+</body>
+</html>

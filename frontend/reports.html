@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports | Media Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <p class="site-name">Media Tracker</p>
+      <!-- TODO: add signed-in user controls if needed. -->
+      <nav aria-label="Main navigation">
+      <a href="index.html">Browse media</a>
+      <a href="media-form.html">Add media</a>
+      <a href="users.html">Users</a>
+      <a href="reports.html" aria-current="page">Reports</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <h1>Reports</h1>
+    <p class="notice">Frontend scaffold: data is not connected yet. Forms and reports are inactive.</p>
+    <!-- TODO: Confirm report endpoints and parameter formats with the backend. -->
+    <section aria-labelledby="top-shows-heading">
+      <h2 id="top-shows-heading">Top 10 rated shows by year</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Report parameters</legend>
+          <label for="show-year">Release year</label><input id="show-year" name="year" type="number" step="1">
+          <button type="button" disabled>Run report</button>
+        </fieldset>
+      </form>
+      <!-- TODO: Render a results table with columns: MediaID, Title, AverageReviewScore, TotalReviews, Platform, SeasonCount, Genre, RatingRank. -->
+      <p class="empty-state">Report results will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="active-users-heading">
+      <h2 id="active-users-heading">Most active users</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Report parameters</legend>
+          <label for="minimum-reviews">Minimum reviews</label><input id="minimum-reviews" name="minimumReviews" type="number" min="0" step="1">
+          <button type="button" disabled>Run report</button>
+        </fieldset>
+      </form>
+      <!-- TODO: Render a results table with columns: UserID, Username, TotalReviews, ActivityRank. -->
+      <p class="empty-state">Report results will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="box-office-heading">
+      <h2 id="box-office-heading">Average box office revenue by MPA rating</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Report parameters</legend>
+          <label for="movie-genre">Movie genre</label><select id="movie-genre" name="genre"><option value="">Genres will load here</option></select>
+          <button type="button" disabled>Run report</button>
+        </fieldset>
+      </form>
+      <!-- TODO: Render a results table with columns: MPARating, AverageBoxOfficeRevenue. -->
+      <p class="empty-state">Report results will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="creators-heading">
+      <h2 id="creators-heading">Most successful authors or producers</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Report parameters</legend>
+          <label for="person-type">Person type</label><select id="person-type" name="personType"><option>Author</option><option>Producer</option></select>
+          <button type="button" disabled>Run report</button>
+        </fieldset>
+      </form>
+      <!-- TODO: Render a results table with columns: PersonID, FirstName, LastName, TotalCopiesSold, TotalBoxOfficeSales, SalesRank. -->
+      <p class="empty-state">Report results will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="favorite-genre-heading">
+      <h2 id="favorite-genre-heading">A user's favorite genre</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Report parameters</legend>
+          <label for="report-user">User</label><select id="report-user" name="userId"><option value="">Users will load here</option></select>
+          <button type="button" disabled>Run report</button>
+        </fieldset>
+      </form>
+      <!-- TODO: Render a results table with columns: UserID, Username, GenreID, GenreName, AverageRating, TotalReviews; include all tied favorite genres. -->
+      <p class="empty-state">Report results will appear here once connected.</p>
+    </section>
+
+  </main>
+  <footer class="container"><p>Media Tracker · CIS 560 Group 3</p></footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add media | Media Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <p class="site-name">Media Tracker</p>
+      <!-- add signed-in user controls if needed. -->
+      <nav aria-label="Main navigation">
+      <a href="index.html">Browse media</a>
+      <a href="media-form.html" aria-current="page">Add media</a>
+      <a href="users.html">Users</a>
+      <a href="reports.html">Reports</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <h1>Add media</h1>
+    <p class="notice">Frontend scaffold: data is not connected yet. Forms and reports are inactive.</p>
+    <!-- TODO: Reuse this form for editing an existing media record when a media ID is supplied. -->
+    <form>
+      <fieldset disabled>
+        <legend>Shared media details</legend>
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text">
+        <label for="type">Media type</label>
+        <select id="type" name="mediaType">
+          <option value="">Choose a type</option><option>Movie</option><option>Show</option><option>Book</option>
+        </select>
+        <label for="genre">Genre</label>
+        <select id="genre" name="genre"><option value="">Genres will load here</option></select>
+        <!-- TODO: Populate lookup selects with database IDs instead of hard-coded values. -->
+      </fieldset>
+      <section aria-labelledby="type-fields-heading">
+        <h2 id="type-fields-heading">Type-specific fields</h2>
+        <!-- TODO: Show only the field group matching the selected type using JavaScript.
+             Movie: MPA rating, producer, box office revenue, and final schema fields.
+             Show: platform, season count, release year, and final schema fields.
+             Book: author, publisher, copies sold, and final schema fields.
+             Use lookup selectors for related records; confirm remaining fields from the SQL model. -->
+        <p class="empty-state">Movie, show, and book fields will be added after the schema is finalized.</p>
+      </section>
+      <!-- TODO: Connect create/update requests, validate input, and display success/error feedback. -->
+      <button type="button" disabled>Save media</button>
+      <a href="index.html">Cancel</a>
+    </form>
+  </main>
+  <footer class="container"><p>Media Tracker · CIS 560 Group 3</p></footer>
+</body>
+</html>

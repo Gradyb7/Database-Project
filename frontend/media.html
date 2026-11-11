@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media details | Media Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <p class="site-name">Media Tracker</p>
+      <!-- add signed-in user controls if needed. -->
+      <nav aria-label="Main navigation">
+      <a href="index.html">Browse media</a>
+      <a href="media-form.html">Add media</a>
+      <a href="users.html">Users</a>
+      <a href="reports.html">Reports</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <h1>Media details</h1>
+    <p class="notice">Frontend scaffold: data is not connected yet. Forms and reports are inactive.</p>
+    <a href="index.html">Back to catalog</a>
+    <section aria-labelledby="details-heading">
+      <h2 id="details-heading">Media title placeholder</h2>
+      <!-- TODO: Read the selected media ID and load its details. Handle missing/invalid IDs. Display shared fields (title, type, genre) plus relevant movie/show/book fields.-->
+      <dl>
+        <dt>Media type</dt><dd>Not loaded</dd>
+        <dt>Genre</dt><dd>Not loaded</dd>
+        <dt>Average rating</dt><dd>Not loaded</dd>
+      </dl>
+      <!-- TODO: Add an edit link carrying this media ID to media-form.html. -->
+    </section>
+    <section aria-labelledby="reviews-heading">
+      <h2 id="reviews-heading">Reviews</h2>
+      <!-- TODO: Render reviewer, score, review text, and date from the backend. -->
+      <p class="empty-state">Reviews will appear here once connected.</p>
+    </section>
+    <section aria-labelledby="review-form-heading">
+      <h2 id="review-form-heading">Write a review</h2>
+      <form>
+        <fieldset disabled>
+          <legend>Review details</legend>
+          <!-- TODO: Associate the review with a user and this media ID. -->
+          <label for="rating">Rating (scale to be confirmed)</label>
+          <input id="rating" name="rating" type="number">
+          <label for="review-text">Written review</label>
+          <textarea id="review-text" name="reviewText" rows="5"></textarea>
+          <button type="button" disabled>Save review</button>
+          <!-- TODO: Add submission, validation, success/error messages, and review update/delete flows. -->
+        </fieldset>
+      </form>
+    </section>
+  </main>
+  <footer class="container"><p>Media Tracker · CIS 560 Group 3</p></footer>
+</body>
+</html>

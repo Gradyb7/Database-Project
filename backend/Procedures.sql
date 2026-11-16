@@ -86,3 +86,91 @@ BEGIN
 END;
 
 GO
+
+
+-- Query 4: Most Successful Author or Producer
+-- Shows authors ranked by total copies sold or producers ranked by total box office revenue.
+-- Uses @PersonType ('author' or 'producer') to select which people to rank.
+-- People with equal sales totals receive the same rank.
+
+CREATE OR ALTER PROCEDURE MostSuccessfulPerson
+    @PersonType NVARCHAR(20)
+AS
+BEGIN
+
+    SET @PersonType = LOWER(LTRIM(RTRIM(@PersonType)));
+
+    IF @PersonType = 'author'
+    BEGIN
+        SELECT
+            A.AuthorID AS PersonID,
+            A.FirstName,
+            A.LastName,
+            SUM(B.CopiesSold) AS TotalCopiesSold,
+            CAST(NULL AS DECIMAL(38, 2)) AS TotalBoxOfficeSales,
+            RANK() OVER (
+                ORDER BY SUM(B.CopiesSold) DESC
+            ) AS SalesRank
+        FROM Author A
+        INNER JOIN Book B ON B.AuthorID = A.AuthorID
+        GROUP BY
+            A.AuthorID,
+            A.FirstName,
+            A.LastName
+        ORDER BY SalesRank, PersonID;
+    END;
+    ELSE
+    BEGIN
+        SELECT
+            P.ProducerID AS PersonID,
+            P.FirstName,
+            P.LastName,
+            CAST(NULL AS BIGINT) AS TotalCopiesSold,
+            SUM(M.BoxOfficeRevenue) AS TotalBoxOfficeSales,
+            RANK() OVER (
+                ORDER BY SUM(M.BoxOfficeRevenue) DESC
+            ) AS SalesRank
+        FROM Producer P
+        INNER JOIN Movie M ON M.ProducerID = P.ProducerID
+        GROUP BY
+            P.ProducerID,
+            P.FirstName,
+            P.LastName
+        ORDER BY SalesRank, PersonID;
+    END;
+END;
+GO
+
+-- Query 5: A User's Favorite Genre
+-- Shows the genre with the highest average review rating for @UserID.
+-- Only includes genres the user has reviewed.
+-- Returns all genres tied for the highest average rating.
+
+CREATE OR ALTER PROCEDURE UsersFavoriteGenre
+    @UserID INT
+AS
+BEGIN
+    SELECT TOP 1 WITH TIES
+        U.UserID,
+        U.UserName AS Username,
+        G.GenreID,
+        G.GenreName,
+        AVG(R.Score) AS AverageRating,
+        Count(*) AS TotalReviews
+
+    FROM Review R
+    INNER JOIN Media M
+        ON M.MediaID = R.MediaID
+    INNER JOIN Genre G
+        ON G.GenreID = M.GenreID
+    INNER JOIN Users U
+        ON U.UserID = R.UserID
+    WHERE U.UserID = @UserID
+    GROUP BY
+        U.UserID,
+        U.UserName,
+        G.GenreID,
+        G.GenreName
+    ORDER BY AverageRating DESC;
+END;
+GO

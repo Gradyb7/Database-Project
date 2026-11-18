@@ -1,0 +1,13 @@
+{
+  "name": "media-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CIS 560 media tracking application",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": { "dotenv": "^17.0.0", "express": "^5.0.0", "mssql": "^12.0.0" }
+}

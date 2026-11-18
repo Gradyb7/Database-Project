@@ -100,16 +100,21 @@ BEGIN
 
     SET @PersonType = LOWER(LTRIM(RTRIM(@PersonType)));
 
+    IF @PersonType IS NULL OR @PersonType NOT IN ('author', 'producer')
+    BEGIN
+        THROW 50001, 'PersonType must be author or producer.', 1;
+    END;
+
     IF @PersonType = 'author'
     BEGIN
         SELECT
             A.AuthorID AS PersonID,
             A.FirstName,
             A.LastName,
-            SUM(B.CopiesSold) AS TotalCopiesSold,
+            SUM(CAST(B.CopiesSold AS BIGINT)) AS TotalCopiesSold,
             CAST(NULL AS DECIMAL(38, 2)) AS TotalBoxOfficeSales,
             RANK() OVER (
-                ORDER BY SUM(B.CopiesSold) DESC
+                ORDER BY SUM(CAST(B.CopiesSold AS BIGINT)) DESC
             ) AS SalesRank
         FROM Author A
         INNER JOIN Book B ON B.AuthorID = A.AuthorID
@@ -155,7 +160,7 @@ BEGIN
         U.UserName AS Username,
         G.GenreID,
         G.GenreName,
-        AVG(R.Score) AS AverageRating,
+        AVG(CAST(R.Score AS DECIMAL(10, 4))) AS AverageRating,
         Count(*) AS TotalReviews
 
     FROM Review R

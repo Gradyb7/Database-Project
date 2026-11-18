@@ -50,3 +50,14 @@ footer { border-top: 1px solid #ccc; padding-block: 1rem; color: #555; }
   h1 { font-size: 1.75rem; }
   fieldset { padding: 0.75rem; }
 }
+
+.results { overflow-x: auto; margin-block: 1rem; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { padding: 0.65rem; text-align: left; border: 1px solid #ccc; }
+th { background: #eaf0f6; white-space: nowrap; }
+
+/* Hidden subtype fields should not appear until their media type is selected. */
+[hidden] { display: none !important; }
+article { padding: 1rem; margin-block: 1rem; border: 1px solid #ccc; background: #fff; }
+article button { margin-right: 0.5rem; }
+dd, article p, td { overflow-wrap: anywhere; white-space: pre-wrap; }
